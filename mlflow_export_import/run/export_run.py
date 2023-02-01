@@ -69,10 +69,10 @@ class RunExporter:
         # copy artifacts
         dst_path = os.path.join(output_dir, "artifacts")
         try:
-            artifacts = self.mlflow_client.list_artifacts(run.info.run_id)
-            if len(artifacts) > 0: # Because of https://github.com/mlflow/mlflow/issues/2839
-                fs.mkdirs(dst_path)
-                self.mlflow_client.download_artifacts(run.info.run_id, "", dst_path=_filesystem.mk_local_path(dst_path))
+            # artifacts = self.mlflow_client.list_artifacts(run.info.run_id)
+            # if len(artifacts) > 0: # Because of https://github.com/mlflow/mlflow/issues/2839
+            #     fs.mkdirs(dst_path)
+            #     self.mlflow_client.download_artifacts(run.info.run_id, "", dst_path=_filesystem.mk_local_path(dst_path))
             notebook = tags.get(MLFLOW_DATABRICKS_NOTEBOOK_PATH, None)
             if notebook is not None:
                 if len(self.notebook_formats) > 0:
